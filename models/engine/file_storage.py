@@ -1,37 +1,53 @@
 #!/usr/bin/python3
-""" Contains a Class File Storage that serialezes instances to a JSON 
-    file and deserializes JSON file to instances
-"""
+'''File Storage'''
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class FileStorage:
-    """Initializing class attributes:
-        __file_path = JSON file path
-        __objects = Basemodel instance dictionary
-        structures of dictionary:
-                obj.id: obj value"""
+    '''serializes and deserialzes json files'''
 
-    __file_path = "file.json"
-    __objects = dict() # we use a dictionary to avoid duplication of a key.When we save an object multiple times its not duplicated.
+    __file_path = 'file.json'
+    __objects = {}
+    class_dict = {"BaseModel": BaseModel, "User": User, "Place": Place,
+                  "Amenity": Amenity, "City": City, "Review": Review,
+                  "State": State}
+
+    def all(self):
+        '''Return dictionary of <class>.<id> : object instance'''
+        return self.__objects
 
     def new(self, obj):
-        """Adds a new basemodel instance in the __object dictionary"""
-        FileStorage.__objects[obj.id] = obj
-    
-    def all(self):
-        """Method returns all the methos stored in FileStorage"""
-        return FileStorage.__objects
-
+        '''Add new obj to existing dictionary of instances'''
+        if obj:
+            key = '{}.{}'.format(obj.__class__.__name__, obj.id)
+            self.__objects[key] = obj
 
     def save(self):
-        """Serializes the __objects dictionary values to the JSON file path"""
-        new_dicts = [] #created a new list to store the dictionary of each of our objects because it helps avoid reduncdancy(repretitive information)
-        for obj in FileStorage.__objects.values():
-            new_dicts.append(obj.to_dict()) #list that contains the dictionary representation of each of our objects
+        '''Save obj dictionaries to json file'''
+        my_dict = {}
 
-        with open(FileStorage.__file_path, "w", encoding="utf-8") as f: #writing to our JSON file
-            json.dump(new_dicts, f)
-    
+        for key, obj in self.__objects.items():
+            '''if type(obj) is dict:
+            my_dict[key] = obj
+            else:'''
+            my_dict[key] = obj.to_dict()
+        with open(self.__file_path, 'w') as f:
+            json.dump(my_dict, f)
+
     def reload(self):
+        '''If json file exists, convert obj dicts back to instances'''
+        try:
+            with open(self.__file_path, 'r') as f:
+                new_obj = json.load(f)
+            for key, val in new_obj.items():
+                obj = self.class_dict[val['__class__']](**val)
+                self.__objects[key] = obj
+        except FileNotFoundError:
+            pass
