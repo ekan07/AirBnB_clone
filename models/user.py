@@ -7,8 +7,14 @@ import json
 
 
 class User(BaseModel):
-    '''base model class'''
-
+    """
+    Inherits from BaseModel
+    Public class attribute:
+        email: (str)
+        password: (str)
+        first_name: (str)
+        last_name: (str)
+    """
     email = ""
     password = ""
     first_name = ""
