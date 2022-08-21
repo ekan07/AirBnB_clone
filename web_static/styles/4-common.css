@@ -1,0 +1,17 @@
+/* global style (i.e. body and .container styles) */
+
+body {
+    color: #484848;
+    padding: 0px; margin: 0px;
+    font-size: 14px;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* Container style */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    /* text-align: center; */
+    /* height: 250%; */
+    /* align-content: center; */
+}
