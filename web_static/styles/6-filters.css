@@ -31,7 +31,6 @@ h3, h4 {
 .amenities h3 {
     font-weight: 600;
     margin-top: 17px;
-
     margin: 12px 0 5px 0;
 }
 
@@ -39,7 +38,6 @@ h3, h4 {
 .amenities h4 {
     font-weight: 400;
     font-size: 14px;
-
     margin: 0 0 5px 0;
 }
 
@@ -68,29 +66,52 @@ section.filters button:hover {
     width: 100%;
     border: #DDDDDD 1px solid;
     border-radius: 4px;
-    list-style-type: none;
-    /* padding: 0; */
+    /* list-style-type: none; */
     padding: 30px 50px 30px 0px;
     left: -51px;
-    /* display: block; */
     display: none;
-    /* visibility: hidden; */
     position: relative;
     z-index: 1;
     margin-top: 17px;
-
 }
 
-.popover li {
+.popover, .popover ul {
+    list-style-type: none;
+}
+
+/* .popover li {
     margin: 1px 50px;
-}
+} */
 
 .popover li h2 {
     margin-top: 5px;
     margin-bottom: 0px;
 }
 
+.popover h2 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
 .filters .amenities:hover .popover,
 .filters .locations:hover .popover {
     display: block;
+}
+
+.locations > .popover > li {
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+.locations > .popover > li > ul {
+    padding-left: 20px;
+}
+
+.locations > .popover > li > ul > li {
+    margin-bottom: 10px;
+}
+
+.amenities > .popover > li {
+    margin-left: 50px;
+    margin-bottom: 10px;
 }
