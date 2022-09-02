@@ -1,9 +1,10 @@
-
 header {
     height:70px; 
     width:100%;
     background-color: white;
     border-bottom: 1px solid #cccccc;
+    display: flex;
+    align-items: center;
 }
 
 .logo {
@@ -11,5 +12,5 @@ header {
     background-repeat: no-repeat;
     margin-left: 20px;
     height: 60px;
-    width: 50%;
+    width: 140px;
   }

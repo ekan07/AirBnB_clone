@@ -1,13 +1,11 @@
 # AirBnB clone - The console
 
 ## Description
-
 This team project is part of the ALX Software Engineer program.
 It's the first step towards building a first full web application: an AirBnB clone.
 This first step consists of a custom command-line interface for data management, and the base classes for the storage of this data.
 
 ## Usage
-
 The console works both in interactive mode and non-interactive mode, much like a Unix shell.
 It prints a prompt **(hbnb)** and waits for the user for input.
 
@@ -34,7 +32,6 @@ EOF  all  count  create  destroy  help  quit  show  update
 ```
 
 ## Models
-
 The folder [models](./models/) contains all the classes used in this project.
 
 File | Description | Attributes
@@ -48,7 +45,6 @@ File | Description | Attributes
 [review.py](./models/review.py) | Review class for future user/host review information | place_id, user_id, text
 
 ## File storage
-
 The folder [engine](./models/engine/) manages the serialization and deserialization of all the data, following a JSON format.
 
 A FileStorage class is defined in [file_storage.py](./models/engine/file_storage.py) with methods to follow this flow:
@@ -58,11 +54,9 @@ The [__init__.py](./models/__init__.py) file contains the instantiation of the F
 This allows the storage to be reloaded automatically at initialization, which recovers the serialized data.
 
 ## Tests
-
 All the code is tested with the **unittest** module.
 The test for the classes are in the [test_models](./tests/test_models/) folder.
 
 ## Authors
-
 - **Aniekan Boniface**
 - **Ofome Arubayi**
